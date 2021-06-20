@@ -3,3 +3,4 @@
 .babelrc.json
 .eslintrc.js
 *.md
+.env

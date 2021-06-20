@@ -2,6 +2,10 @@
   "name": "@hueyy/kenobi",
   "version": "1.0.1",
   "description": "looks for broken links in tweets",
+  "bugs": {
+    "url": "https://github.com/hueyy/kenobi/issues"
+  },
+  "repository": "hueyy/kenobi",
   "license": "MIT",
   "author": "Huey Lee <hello@huey.xyz>",
   "main": "index.js",
@@ -68,5 +72,6 @@
   },
   "engines": {
     "node": ">=v14.17.0"
-  }
+  },
+  "homeppage": "https://github.com/hueyy/kenobi"
 }
