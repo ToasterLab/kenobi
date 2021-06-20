@@ -1,0 +1,66 @@
+{
+  "name": "kenobi",
+  "version": "1.0.0",
+  "description": "looks for broken links in tweets",
+  "license": "MIT",
+  "author": "Huey Lee <hello@huey.xyz>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon -e ts --exec npm run babel-node",
+    "babel-node": "babel-node -x \".ts\",\".tsx\" src/cli.tsx",
+    "lint:staged": "lint-staged",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,d.ts}": [
+      "tsc --allowSyntheticDefaultImports --noEmit --esModuleInterop --moduleResolution node --skipLibCheck --resolveJsonModule --downlevelIteration --lib ESNEXT,ES2020.String,dom"
+    ],
+    "*.{ts,js,json}": [
+      "eslint --fix --ignore-pattern"
+    ],
+    "package.json": [
+      "npx sort-package-json"
+    ]
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.14.5",
+    "commander": "^7.2.0",
+    "ink": "^3.0.8",
+    "memoize-fs": "^2.2.0",
+    "react": "^17.0.2",
+    "twitter-v2": "^1.1.0",
+    "whoiser": "^1.12.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/eslint-plugin": "^7.14.5",
+    "@babel/node": "^7.14.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/node": "^15.12.3",
+    "@types/react": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "dotenv": "^10.0.0",
+    "eslint": "7.28.0",
+    "eslint-plugin-disable": "^2.0.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-no-secrets": "^0.8.9",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-sonarjs": "^0.7.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
+    "eslint-plugin-unicorn": "^33.0.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.4"
+  },
+  "engines": {
+    "node": ">=v14.17.0"
+  }
+}
