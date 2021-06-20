@@ -50,6 +50,7 @@ module.exports = {
       `backtick`
     ],
     "security/detect-non-literal-fs-filename": `off`,
+    "security/detect-non-literal-require": `off`,
     semi: [
       `warn`,
       `never`
@@ -60,6 +61,6 @@ module.exports = {
     "unicorn/no-array-reduce": `off`,
     "unicorn/no-null": `off`,
     "unicorn/prefer-module": `off`,
-    "unicorn/prefer-node-protocol": `off`
+    "unicorn/prefer-node-protocol": `off`,
   }
 }

@@ -1,16 +1,21 @@
 {
-  "name": "kenobi",
-  "version": "1.0.0",
+  "name": "@hueyy/kenobi",
+  "version": "1.0.1",
   "description": "looks for broken links in tweets",
   "license": "MIT",
   "author": "Huey Lee <hello@huey.xyz>",
   "main": "index.js",
+  "bin": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon -e ts --exec npm run babel-node",
     "babel-node": "babel-node -x \".ts\",\".tsx\" src/cli.tsx",
+    "build": "babel src -d dist -x \".ts\",\".tsx\" --copy-files --source-maps",
     "lint:staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublish": "npm run build",
+    "publish": "npm publish --access public",
+    "start:dev": "nodemon -e ts --exec npm run babel-node",
+    "start": "node dist/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
     "*.{ts,d.ts}": [
