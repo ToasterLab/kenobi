@@ -15,7 +15,7 @@ const Memoize = <InputFunction extends PromiseFunction>(
     force = false,
   } = options
   const memoizer = MemoizeFS({ cachePath: `./cache` , force, maxAge })
-  return await (await memoizer.fn(function_))(arguments_)
+  return await (await memoizer.fn(function_))(...arguments_)
 }
 
 export default Memoize

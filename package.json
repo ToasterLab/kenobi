@@ -28,6 +28,7 @@
     "commander": "^7.2.0",
     "ink": "^3.0.8",
     "memoize-fs": "^2.2.0",
+    "parse-domain": "^3.0.3",
     "react": "^17.0.2",
     "twitter-v2": "^1.1.0",
     "whoiser": "^1.12.0"

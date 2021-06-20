@@ -57,6 +57,7 @@ module.exports = {
     "sort-keys": [`error`, `asc`, { "caseSensitive": true, "minKeys": 2, "natural": true }],
     "sort-keys-fix/sort-keys-fix": 2,
     "unicorn/filename-case": `off`,
+    "unicorn/no-array-reduce": `off`,
     "unicorn/no-null": `off`,
     "unicorn/prefer-module": `off`,
     "unicorn/prefer-node-protocol": `off`

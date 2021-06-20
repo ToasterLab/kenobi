@@ -20,29 +20,42 @@ const getClient = async (): Promise<TwitterV2> => {
   })
 }
 
-const getTweets = Memoize(async (
-  id: string,
-): Promise<Tweet[]> => {
-  try {
+const getTweets = Memoize(
+  async (id: string, paginationToken = null):
+  Promise<{ data: Tweet[], meta: { next_token: string }}> => {
     const client = await getClient()
-    const { data, errors } = await client.get(`users/${id}/tweets`, {
+    const { data, errors, meta } = await client.get(`users/${id}/tweets`, {
       max_results: `100`,
       tweet: {
         fields: [
           `created_at`,
           `entities`,
-          `public_metrics`,
         ],
       },
+      ...(paginationToken
+        ? { pagination_token: paginationToken }
+        : {}
+      )
     })
     if(errors){
       throw errors
     }
-    return data
-  } catch (error){
-    console.error(error)
+    return { data, meta }
   }
-})
+)
+
+const getAllTweets = async (
+  id: string,
+  lastData = [],
+  paginationToken = null,
+): Promise<Tweet[]> => {
+  const { data, meta } = await getTweets(id, paginationToken)
+  const totalData: Tweet[] = [...lastData, ...data]
+  if(meta?.next_token){
+    return await getAllTweets(id, totalData, meta.next_token)
+  }
+  return totalData
+}
 
 /**
  * @param handle Twitter handle
@@ -63,11 +76,12 @@ const userLookup = Memoize(async (handle: string): Promise<string> => {
 })
 
 const getTweetsByUsername = async (handle: string): Promise<Tweet[]> => {
-  const userId = await Twitter.userLookup(handle)
-  return await Twitter.getTweets(userId)
+  const userId = await userLookup(handle)
+  return await getAllTweets(userId)
 }
 
 const Twitter = {
+  getAllTweets,
   getTweets,
   getTweetsByUsername,
   userLookup,
