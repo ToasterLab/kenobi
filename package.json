@@ -1,6 +1,6 @@
 {
   "name": "@hueyy/kenobi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "looks for broken links in tweets",
   "bugs": {
     "url": "https://github.com/hueyy/kenobi/issues"
