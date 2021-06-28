@@ -15,6 +15,9 @@ const getClient = async (): Promise<TwitterV2> => {
   const {
     TWITTER_BEARER_TOKEN
   } = process.env
+  if(!TWITTER_BEARER_TOKEN || TWITTER_BEARER_TOKEN.length === 0){
+    throw new Error(`Please set a TWITTER_BEARER_TOKEN environment variable`)
+  }
   return new TwitterV2({
     bearer_token: TWITTER_BEARER_TOKEN,
   })
